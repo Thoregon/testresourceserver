@@ -54,7 +54,7 @@ service.post('/add', async (req, res) => {
 
 const PORT = 7779;
 
-service.listen(PORT);
+service.listen(PORT,"0.0.0.0");
 
 console.log("Test Resource Server\n====================\n");
 console.log(`> Listening to 7779 -> http://127.0.0.1:${PORT}/README.md`);
