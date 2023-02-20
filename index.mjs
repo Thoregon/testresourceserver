@@ -19,9 +19,22 @@ const service   = express();
 
 service.use(cors({ origin: '*' }));
 
+const setHeaders =  function(res, path) {
+    res.set("Access-Control-Allow-Origin",  "*");
+    res.set("Access-Control-Allow-Headers", "Content-Type,X-Requested-With");
+    res.set("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+    res.set("Cross-Origin-Embedder-Policy", "require-corp");
+    res.set("Cross-Origin-Opener-Policy",   "same-origin");
+}
+
+
 //  serve uploaded files
 const staticroot = path.resolve(process.cwd(), 'www');
-service.use(express.static(staticroot));
+service.use(express.static(staticroot, { setHeaders }));
+
+// serve other test
+const staticroot2 = path.resolve(process.cwd(), '../thoregon.modules/thoregon.neuland/test');
+service.use(express.static(staticroot2, { setHeaders }));
 
 const B64MGK = '$B64$';
 const B64ML  = B64MGK.length;
