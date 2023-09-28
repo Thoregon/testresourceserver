@@ -1,0 +1,18 @@
+version: '3'
+networks:
+  resource:
+volumes:
+  resourcedata:
+services:
+  thoregon:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: resourceserver
+    restart: unless-stopped
+    volumes:
+      - resourcedata:/resources/www
+    networks:
+      - resource
+    ports:
+      - 7779:7779
