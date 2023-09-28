@@ -1,8 +1,7 @@
-version: '3'
+version: '3.3'
 networks:
   resource:
-volumes:
-  resourcedata:
+    attachable: true
 services:
   thoregon:
     build:
@@ -11,7 +10,7 @@ services:
     container_name: resourceserver
     restart: unless-stopped
     volumes:
-      - resourcedata:/resources/www
+      - /home/lucky/containers/resourceserver/www:/resources/www
     networks:
       - resource
     ports:
