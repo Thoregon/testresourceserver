@@ -1,6 +1,6 @@
 # podman build -t thoregon/thoregon:0.1  https://github.com/Thoregon/Puls.Container.git
 # docker run -i -t localhost/thoregon/thoregon:0.1
-FROM node:18-alpine
+FROM node:18.6.0-alpine
 RUN apk add dumb-init
 ENV NODE_ENV production
 # RUN addgroup --g 1000 thoregon
